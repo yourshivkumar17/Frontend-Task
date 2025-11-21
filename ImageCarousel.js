@@ -35,4 +35,40 @@
 
 <script>
 let images = [
-    "h
+    "https://picsum.photos/id/1015/400/250",
+    "https://picsum.photos/id/1025/400/250",
+    "https://picsum.photos/id/1035/400/250",
+    "https://picsum.photos/id/1045/400/250",
+    "https://picsum.photos/id/1055/400/250"
+];
+
+let index = 0;
+let slide = document.getElementById("slide");
+
+function show() {
+    slide.src = images[index];
+}
+
+function next() {
+    index = (index + 1) % images.length;
+    show();
+}
+
+function prev() {
+    index = (index - 1 + images.length) % images.length;
+    show();
+}
+
+let autoSlide = setInterval(next, 3000);
+
+slide.onmouseenter = function () {
+    clearInterval(autoSlide);
+};
+
+slide.onmouseleave = function () {
+    autoSlide = setInterval(next, 3000);
+};
+</script>
+
+</body>
+</html>
